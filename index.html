@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexagon Builder</title>
+    <link href="styles.css" rel="stylesheet"> 
+    <script defer src="js/objects.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Hexagon Builder</h1>
+        <p>Building simple hexagon patterns to use in art projects or web-design.</p>
+    </header>
+    <section>
+        <form>
+            <ul>
+                <legend>Box Dimensions:</legend>
+                <li>
+                    <label for= "box-width">Box Width</label>
+                    <input type= "number" id= "box-width" placeholder="300">
+                </li>
+                <li>
+                    <label for= "box-height">Box Height</label>
+                    <input type= "number" id= "box-height" placeholder="300">
+                </li>
+                <legend>Hexagon Components:</legend>
+                <li>
+                    <label for= "hex-x-coordinate">X-coordinate</label>
+                    <input type= "number" id= "hex-x-center" placeholder="150">
+                </li>
+                <li>    
+                    <label for= "hex-y-coordinate">Y-coordinate</label>
+                    <input type= "number" id= "hex-y-center" placeholder="150">
+                </li>
+                <li>
+                    <label for= "hex-radius">Hexagon Radius</label>
+                    <input type= "number" id= "hex-radius" placeholder="35">
+                </li>
+                <li>
+                    <label for= "hex-total">Number of Hexagons</label>
+                    <input type= "number" id= "hex-total" placeholder="1">
+                </li>
+            </ul>
+        </form>
+        <button id= "orientation-button">Orientation</button>
+        <button id= "draw-button">Draw Hexagon</button>
+    </section>
+    <section>
+        <div>
+            <h2>Hexagon Display</h2>
+        </div>
+        <div>
+            <h2>Hexagon Text</h2>
+        </div>
+    </section>
+</body>
+</html>
