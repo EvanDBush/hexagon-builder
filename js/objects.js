@@ -4,6 +4,7 @@ let yCoordinate;
 let center = [xCoordinate, yCoordinate];
 let width;
 let height;
+let stringSyntax;
 
 const radiusInput = document.getElementById('hex-radius');
 const xCoordinateInput = document.getElementById('hex-x-coordinate');
@@ -49,7 +50,7 @@ class Hex {
                 ]);
             };
         let coordinates = hexagon.join(' ')
-        let stringSyntax = `<polygon points= "${coordinates}" />`;
+        return stringSyntax = `<polygon points= \"${coordinates}\">`;
     }
     get nextCenters() {
         return this.nextCenters;
@@ -67,24 +68,32 @@ class Hex {
     }
 }
 
-radiusButton.addEventListener('click', (event) => {
-    radius = event.target.innerText;
+const drawHex = new Hex(center, radius);
+
+radiusButton.addEventListener('click', () => {
+    radius = radiusInput.value;
+    console.log(radius);
 });
-xCoordinateButton.addEventListener('click', (event) => {
-    xCoordinate = event.target.innerText;
+xCoordinateButton.addEventListener('click', () => {
+    xCoordinate = xCoordinateInput.value;
+    console.log(xCoordinate);
 });
-yCoordinateButton.addEventListener('click', (event) => {
-    yCoordinate = event.target.innerText;
+yCoordinateButton.addEventListener('click', () => {
+    yCoordinate = yCoordinateInput.value;
+    console.log(yCoordinate);
 });
-widthButton.addEventListener('click', (event) => {
-    width = event.target.innerText;
+widthButton.addEventListener('click', () => {
+    width = widthInput.value;
+    console.log(width);
 });
-heightButton.addEventListener('click', (event) => {
-    height = event.target.innerText;
+heightButton.addEventListener('click', () => {
+    height = heightInput.value;
+    console.log(height);
 });
-drawButton.addEventListener('click', (event) => {
+drawButton.addEventListener('click', () => {
     center = [xCoordinate, yCoordinate];
-    getHexPoints();
+    drawHex.hexPoints();
+    console.log(drawHex.hexPoints());
     image.innerhtml = stringSyntax;
 });
 
