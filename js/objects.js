@@ -1,10 +1,15 @@
-const radius = document.getElementById('hex-radius');
-const xCoordinate = document.getElementById('hex-x-coordinate');
-const yCoordinate = document.getElementById('hex-y-coordinate');
-const center = `[${xCoordinate}, ${yCoordinate}]`;
-const width = document.getElementById('box-width');
-const height = document.getElementById('box-height');
-const boxSize = (width, height);
+const radiusInput = document.getElementById('hex-radius');
+const xCoordinateInput = document.getElementById('hex-x-coordinate');
+const yCoordinateInput = document.getElementById('hex-y-coordinate');
+const widthInput = document.getElementById('box-width');
+const heightInput = document.getElementById('box-height');
+
+const radiusButton = document.getElementById('hex-radius-update');
+const xCoordinateButton = document.getElementById('hex-x-coordinate-update');
+const yCoordinateButton = document.getElementById('hex-y-coordinate-update');
+const widthButton = document.getElementById('box-width-update');
+const heightButton = document.getElementById('box-height-update');
+const drawButton = document.getElementById('draw-button');
 
 const angles = new Object();
     angles.pointyOrientation = [ 30, 90, 150, 210, 270, 330];
@@ -55,4 +60,27 @@ class Hex {
     }
 }
 
+radiusButton.addEventListener('click', () => {
+    let radius = radiusInput.innerText;
+});
+
+xCoordinateButton.addEventListener('click', () => {
+    let xCoordinate = xCoordinateInput.innerText;
+});
+
+yCoordinateButton.addEventListener('click', () => {
+    let yCoordinate = yCoordinateInput.innerText;
+});
+
+widthButton.addEventListener('click', () => {
+    let width = widthInput.innertext;
+});
+
+heightButton.addEventListener('click', () => {
+    let height = heightInput.innertext;
+});
+
+drawButton.addEventListener('click', () => {
+    gethexpoints();
+});
 
