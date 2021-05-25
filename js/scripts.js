@@ -62,24 +62,29 @@ function getNewCenters (xCoordinate, yCoordinate, radius) {
 };
 
 radiusButton.addEventListener('click', () => {
-    radius = radiusInput.innerText;
+    radius = radiusInput.value;
+    console.log(radius);
 });
-xCoordinateButton.addEventListener('click', (t) => {
-    xCoordinate = xCoordinateInput.innerText;
+xCoordinateButton.addEventListener('click', () => {
+    xCoordinate = xCoordinateInput.value;
+    console.log(xCoordinate);
 });
 yCoordinateButton.addEventListener('click', () => {
-    yCoordinate = yCoordinateInput.innerText;
+    yCoordinate = yCoordinateInput.value;
+    console.log(yCoordinate);
 });
 widthButton.addEventListener('click', () => {
-    width = widthInput.innerText;
+    width = widthInput.value;
+    console.log(width);
 });
-heightButton.addEventListener('click', (t) => {
-    height = heightInput.innerText;
+heightButton.addEventListener('click', () => {
+    height = heightInput.value;
+    console.log(height);
 });
 drawButton.addEventListener('click', () => {
-    getHexPoints();
+    getHexPoints(xCoordinate, yCoordinate, radius);
     document.getElementById('svg-model').innerHTML += stringSyntax;
-    document.getElementById('svg-text').innertext = stringSyntax;
+    document.getElementById('svg-text').value = stringSyntax;
 });
 
 
