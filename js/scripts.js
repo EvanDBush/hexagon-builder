@@ -1,3 +1,10 @@
+let radius;
+let xCoordinate;
+let yCoordinate;
+let width;
+let height;
+let stringSyntax;
+
 const radiusInput = document.getElementById('hex-radius');
 const xCoordinateInput = document.getElementById('hex-x-coordinate');
 const yCoordinateInput = document.getElementById('hex-y-coordinate');
@@ -26,7 +33,8 @@ let flatRadians = [];
     };
 
 function getHexPoints (xCoordinate, yCoordinate, radius) {
-    
+    x = xCoordinate;
+    y= yCoordinate;
     let hexagon = [];
         for (let i=0; i<6; i++) {
             hexagon.push(
@@ -41,9 +49,9 @@ console.log(coordinates);
 console.log(stringSyntax);
 };
 
-function getNewCenters (center, radius) {
-    let x = center[0];
-    let y = center[1];
+function getNewCenters (xCoordinate, yCoordinate, radius) {
+    x = xCoordinate;
+    y= yCoordinate;
     let adjacentCenters = [];
         for (let i=0; i<6; i++) {
             adjacentCenters.push(
@@ -54,24 +62,24 @@ function getNewCenters (center, radius) {
 };
 
 radiusButton.addEventListener('click', () => {
-    let radius = radiusInput.innerText;
+    radius = radiusInput.innerText;
 });
-xCoordinateButton.addEventListener('click', () => {
-    let xCoordinate = xCoordinateInput.innerText;
+xCoordinateButton.addEventListener('click', (t) => {
+    xCoordinate = xCoordinateInput.innerText;
 });
 yCoordinateButton.addEventListener('click', () => {
-    let yCoordinate = yCoordinateInput.innerText;
+    yCoordinate = yCoordinateInput.innerText;
 });
 widthButton.addEventListener('click', () => {
-    let width = widthInput.innertext;
+    width = widthInput.innerText;
 });
-heightButton.addEventListener('click', () => {
-    let height = heightInput.innertext;
+heightButton.addEventListener('click', (t) => {
+    height = heightInput.innerText;
 });
 drawButton.addEventListener('click', () => {
-    const center = [xCoordinate, yCoordinate];
     getHexPoints();
-    image.innerhtml = stringSyntax;
+    document.getElementById('svg-model').innerHTML += stringSyntax;
+    document.getElementById('svg-text').innertext = stringSyntax;
 });
 
 
