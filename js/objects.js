@@ -1,7 +1,6 @@
 let radius;
 let xCoordinate;
 let yCoordinate;
-let center = [xCoordinate, yCoordinate];
 let width;
 let height;
 let stringSyntax;
@@ -32,16 +31,17 @@ const angles = new Object();
     };
 
 class Hex {
-    constructor(center, radius) {
-        this.center = center;
+    constructor(xCoordinate, yCoordinate, radius) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
         this.radius = radius;
     }
     get hexPoints () {
         return this.hexPoints();      
     }
-    hexPoints(center, radius) {
-        let x = center[0];
-        let y = center[1];
+    hexPoints(xCoordinate, yCoordinate, radius) {
+        let x = xCoordinate;
+        let y = yCoordinate;
         let hexagon = [];
             for (let i=0; i<6; i++) {
                 hexagon.push(
@@ -52,12 +52,12 @@ class Hex {
         let coordinates = hexagon.join(' ')
         return stringSyntax = `<polygon points= \"${coordinates}\">`;
     }
-    get nextCenters() {
-        return this.nextCenters;
+    get nextxCoordinates() {
+        return this.nextxCoordinates;
     };
-    nextCenters() {
-        let x = center[0];
-        let y = center[1];
+    nextxCoordinates() {
+        let x = xCoordinate;
+        let y = yCoordinate;
         let adjacentCenters = [];
             for (let i=0; i<6; i++) {
                 adjacentCenters.push(
@@ -68,7 +68,7 @@ class Hex {
     }
 }
 
-const drawHex = new Hex(center, radius);
+const drawHex = new Hex(xCoordinate, radius);
 
 radiusButton.addEventListener('click', () => {
     radius = radiusInput.value;
@@ -91,7 +91,6 @@ heightButton.addEventListener('click', () => {
     console.log(height);
 });
 drawButton.addEventListener('click', () => {
-    center = [xCoordinate, yCoordinate];
     drawHex.hexPoints();
     console.log(drawHex.hexPoints());
     image.innerhtml = stringSyntax;
