@@ -3,7 +3,7 @@ let xCoordinate;
 let yCoordinate;
 let width;
 let height;
-let stringSyntax;
+let coordinates;
 
 const radiusInput = document.getElementById('hex-radius');
 const xCoordinateInput = document.getElementById('hex-x-coordinate');
@@ -17,7 +17,8 @@ const yCoordinateButton = document.getElementById('hex-y-coordinate-update');
 const widthButton = document.getElementById('box-width-update');
 const heightButton = document.getElementById('box-height-update');
 const drawButton = document.getElementById('draw-button');
-const image = document.getElementsByTagName('svg');
+const image = document.getElementById('svg-model');
+const imageText = document.getElementById('svg-text')
 
 radiusButton.addEventListener('click', () => {
     radius = radiusInput.value;
@@ -41,8 +42,12 @@ heightButton.addEventListener('click', () => {
 });
 drawButton.addEventListener('click', () => {
     getHexPoints(xCoordinate, yCoordinate, radius);
-    document.getElementById('svg-model').innerHTML = stringSyntax;
-    document.getElementById('svg-text').innerText = stringSyntax;
+    console.log(image);
+    const hexElement = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    hexElement.setAttributeNS('null', 'points', coordinates)
+    image.appendChild(hexElement);
+    console.log(image.innerHTML);
+    imageText.textContent = image;
 });
 
 const pointyDegrees = [ 30, 90, 150, 210, 270, 330];
@@ -67,9 +72,8 @@ function getHexPoints (xCoordinate, yCoordinate, radius) {
             ]);
         };
     let coordinates = hexagon.join(' ')
-    let stringSyntax = `<polygon points= \"${coordinates}\">`;
-console.log(coordinates);
-console.log(stringSyntax);
+    let stringSyntax = `\"<polygon points= \"${coordinates}\">\"`;
+return coordinates;
 };
 
 function getNewCenters (xCoordinate, yCoordinate, radius) {
