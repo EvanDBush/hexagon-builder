@@ -4,6 +4,7 @@ let yCoordinate;
 let width;
 let height;
 let stringSyntax;
+let hexagon = [];
 
 const radiusInput = document.getElementById('hex-radius');
 const xCoordinateInput = document.getElementById('hex-x-coordinate');
@@ -17,6 +18,7 @@ const yCoordinateButton = document.getElementById('hex-y-coordinate-update');
 const widthButton = document.getElementById('box-width-update');
 const heightButton = document.getElementById('box-height-update');
 const drawButton = document.getElementById('draw-button');
+const image = document.getElementsByTagName('svg');
 
 const angles = new Object();
     angles.pointyOrientation = [ 30, 90, 150, 210, 270, 330];
@@ -36,39 +38,43 @@ class Hex {
         this.yCoordinate = yCoordinate;
         this.radius = radius;
     }
-    get hexPoints () {
-        return this.hexPoints();      
+    set hexPoints() {
+        this._hexPoints = hexPoints();      
     }
-    hexPoints(xCoordinate, yCoordinate, radius) {
-        let x = xCoordinate;
-        let y = yCoordinate;
+    get hexPoints(xCoordinate, yCoordinate, radius) {
+        this.x = (+xCoordinate);
+        this.y= (+yCoordinate);
         let hexagon = [];
             for (let i=0; i<6; i++) {
                 hexagon.push(
-                    [x + Math.round(radius * Math.sin(angles.flatRadians[i])),
-                    y + Math.round(radius * Math.cos(angles.flatRadians[i]))
+                    [x + Math.round(this.radius * Math.sin(angles.flatRadians[i])),
+                    y + Math.round(this.radius * Math.cos(angles.flatRadians[i]))
                 ]);
             };
-        let coordinates = hexagon.join(' ')
-        return stringSyntax = `<polygon points= \"${coordinates}\">`;
+        return hexagon.join(' ')
     }
-    get nextxCoordinates() {
-        return this.nextxCoordinates;
+
+    set nextCoordinatePoints() {
+        this._nextCoordinatePoints = nextCoordinatePoints() ;
     };
-    nextxCoordinates() {
-        let x = xCoordinate;
-        let y = yCoordinate;
+    get nextCoordinatePoints() {
+        this.x = xCoordinate;
+        this.y = yCoordinate;
         let adjacentCenters = [];
             for (let i=0; i<6; i++) {
                 adjacentCenters.push(
-                    [x + Math.round(2 * radius * Math.sin(angles.pointyRadians[i])),
-                    y + Math.round(2 * radius * Math.cos(angles.pointyRadians[i]))]
+                    [x + Math.round(2 * this.radius * Math.sin(angles.pointyRadians[i])),
+                    y + Math.round(2 * this.radius * Math.cos(angles.pointyRadians[i]))]
                 );
             };
+        return adjacentCenters.join(' ');
     }
 }
 
-const drawHex = new Hex(xCoordinate, radius);
+let coordinates = hexagon.join(' ')
+stringSyntax = `<polygon points= \"${coordinates}\">`
+
+const drawHex = new Hex(xCoordinate, yCoordinate, radius);
 
 radiusButton.addEventListener('click', () => {
     radius = radiusInput.value;
@@ -91,8 +97,8 @@ heightButton.addEventListener('click', () => {
     console.log(height);
 });
 drawButton.addEventListener('click', () => {
-    drawHex.hexPoints();
-    console.log(drawHex.hexPoints());
+    drawHex.hexPoints;
+    console.log(drawHex.hexPoints);
     image.innerhtml = stringSyntax;
 });
 
