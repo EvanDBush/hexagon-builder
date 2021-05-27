@@ -3,6 +3,7 @@ let xCoordinate;
 let yCoordinate;
 let width;
 let height;
+let hexagon;
 let coordinates;
 
 const radiusInput = document.getElementById('hex-radius');
@@ -42,9 +43,9 @@ heightButton.addEventListener('click', () => {
 });
 drawButton.addEventListener('click', () => {
     getHexPoints(xCoordinate, yCoordinate, radius);
-    console.log(image);
+    
     const hexElement = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-    hexElement.setAttributeNS('null', 'points', coordinates)
+    hexElement.setAttributeNS('null', 'points', `\"${coordinates}\"`)
     image.appendChild(hexElement);
     console.log(image.innerHTML);
     imageText.textContent = image;
@@ -73,6 +74,7 @@ function getHexPoints (xCoordinate, yCoordinate, radius) {
         };
     let coordinates = hexagon.join(' ')
     let stringSyntax = `\"<polygon points= \"${coordinates}\">\"`;
+    console.log(`\"${coordinates}\"`)
 return coordinates;
 };
 
